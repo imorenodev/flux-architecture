@@ -9,6 +9,7 @@ module.exports = {
     inline: true,
     contentBase: './dist'
   },
+  devtool: 'source-map',
   module: {
     loaders: [
       {
