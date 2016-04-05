@@ -35,7 +35,7 @@ const _findCartItem = (item) => {
   return _cartItems.find( cartItem => cartItem.id === item.id )
 };
 
-const _increaseItem = (item) => item.gty++;
+const _increaseItem = (item) => item.qty++;
 
 const _decreaseItem = (item) => {
   item.qty--;
