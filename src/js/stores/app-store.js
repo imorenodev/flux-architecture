@@ -16,7 +16,16 @@ for ( let i = 1; i < 9; i++ ) {
   });
 }
 
-var cartItems = [];
+var _cartItems = [];
+
+const _addItem = (item) => {
+  const cartItem = _findCartItem(item);
+  if (!cartItem) {
+    _cartItems.push( Object.assign( {qty: 1}, item ) );
+  } else {
+    _increaseItem(cartItem);
+  }
+};
 
 const _removeItem = (item) => {
   _cartItems.splice( _cartItems.findIndex( i => i === item ), 1);
@@ -62,8 +71,8 @@ const AppStore = Object.assign(EventEmitter.prototype, {
     });
   },
   getCartTotals() {
-    return _cartTotals():
-  }
+    return _cartTotals();
+  },
 
   dispatcherIndex: register( function( action ) {
     switch(action.actionType) {
@@ -82,6 +91,6 @@ const AppStore = Object.assign(EventEmitter.prototype, {
     }
     AppStore.emitChange();
   })
-};
+});
 
 export default AppStore;
